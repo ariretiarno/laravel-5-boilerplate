@@ -1,0 +1,15 @@
+- hosts: centos
+  tasks:
+    - name: install python
+      yum:
+        name: python-docker
+        state: present
+    - name: run docker container
+      docker_container:
+        image: ariretiarno/boilerplate
+        detach: yes
+        interactive: yes
+        tty: yes
+        name: test_ansible
+        state: present
+        exposed_ports: 8085
